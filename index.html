@@ -19,36 +19,38 @@
 	        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 	            <li class="nav-item dropdown">
-	              <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">My Cart (4)</a>
+	              <a class="nav-link dropdown-toggle cart-count" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">My Cart (0)</a>
 	              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                  <li class="cart-item">
-                  	<div class="container">
-                  		<div class="row">
-	                  		<div class="col-lg-5">
-	                  			<img src="img/classic-tee.jpg">
-	                  		</div>
-	                  		<div class="col-lg-7">
-	                  			<div class="cart-title">Classic Tee</div>
-	                  			<div class="cart-qty">1x <b>$75.00</b></div>
-	                  			<div class="cart-size">Size: S</div>
-	                  		</div>
+	              	<div class="cart-list">
+	                  <!-- <li class="cart-item">
+	                  	<div class="container">
+	                  		<div class="row">
+		                  		<div class="col-lg-5">
+		                  			<img src="img/classic-tee.jpg">
+		                  		</div>
+		                  		<div class="col-lg-7">
+		                  			<div class="cart-title">Classic Tee</div>
+		                  			<div class="cart-qty">1x <b>$75.00</b></div>
+		                  			<div class="cart-size">Size: S</div>
+		                  		</div>
+		                  	</div>
 	                  	</div>
-                  	</div>
-                  </li>
-                  <li class="cart-item mt-3">
-                  	<div class="container">
-                  		<div class="row">
-	                  		<div class="col-lg-5">
-	                  			<img src="img/classic-tee.jpg">
-	                  		</div>
-	                  		<div class="col-lg-7">
-	                  			<div class="cart-title">Classic Tee</div>
-	                  			<div class="cart-qty">3x <b>$75.00</b></div>
-	                  			<div class="cart-size">Size: L</div>
-	                  		</div>
+	                  </li>
+	                  <li class="cart-item mt-3">
+	                  	<div class="container">
+	                  		<div class="row">
+		                  		<div class="col-lg-5">
+		                  			<img src="img/classic-tee.jpg">
+		                  		</div>
+		                  		<div class="col-lg-7">
+		                  			<div class="cart-title">Classic Tee</div>
+		                  			<div class="cart-qty"><span class="cart-qty-total">3x</span> <b>$75.00</b></div>
+		                  			<div class="cart-size">Size: L</div>
+		                  		</div>
+		                  	</div>
 	                  	</div>
-                  	</div>
-                  </li>
+	                  </li> -->
+                  </div>
 	              </ul>
 	            </li>
 	          </ul>
@@ -98,24 +100,43 @@
     <script src="js/jquery-3.3.1.min.js"></script>
 
     <script type="text/javascript">
-    	/*-------------------
-				Radio Btn
-			--------------------- */
 	    $(".prod-size-choose .prod-item label").on("click", function () {
         $(".prod-size-choose .prod-item label").removeClass('active');
         $(this).addClass('active');
 	    });
 
 	    $('input[name="proditem"]').on("click", function() {
-          var value = $('input[name="proditem"]:checked').val();
-          $(".prod-size-value").empty();
-          $(".prod-size-value").append(value);
+        var value = $('input[name="proditem"]:checked').val();
+        $(".prod-size-value").empty();
+        $(".prod-size-value").append(value);
       });
 
       $("#prodbutton").on("click", function () {
-      		if ($(".prod-size-value").is(':empty')){
-      			alert('Please select size for this item.');
-      		}
+      	var title = $('.prod-title').text();
+      	var price = $('.prod-price').text();
+      	var size = $('input[name="proditem"]:checked').val();
+      	var quantity = 0;
+    		if ($(".prod-size-value").is(':empty')){
+    			alert('Please select size for this item.');
+    		}
+    		else {
+    			console.log(title+price+size);
+    			if (size === 'S'){
+    				quantity++;
+    				$(".cart-list").append('<li class="cart-item"><div class="container"><div class="row"><div class="col-lg-5"><img src="img/classic-tee.jpg"></div><div class="col-lg-7"><div class="cart-title">'+title+'</div><div class="cart-qty"><span class="cart-qty-total">'+quantity+' x</span> <b>'+price+'</b></div><div class="cart-size">Size: '+size+'</div></div></div></div></li>');
+    			}
+    			if (size === 'M'){
+    				quantity++;
+    				$(".cart-list").append('<li class="cart-item"><div class="container"><div class="row"><div class="col-lg-5"><img src="img/classic-tee.jpg"></div><div class="col-lg-7"><div class="cart-title">'+title+'</div><div class="cart-qty"><span class="cart-qty-total">'+quantity+' x</span> <b>'+price+'</b></div><div class="cart-size">Size: '+size+'</div></div></div></div></li>');
+    			}
+    			if (size === 'L'){
+    				quantity++;
+    				$(".cart-list").append('<li class="cart-item"><div class="container"><div class="row"><div class="col-lg-5"><img src="img/classic-tee.jpg"></div><div class="col-lg-7"><div class="cart-title">'+title+'</div><div class="cart-qty"><span class="cart-qty-total">'+quantity+' x</span> <b>'+price+'</b></div><div class="cart-size">Size: '+size+'</div></div></div></div></li>');
+    			}
+
+    			var cart_count = $(".cart-item").length;
+    			$('.cart-count').text("My cart ("+cart_count+")");
+    		}
       });
     </script>
   </body>
