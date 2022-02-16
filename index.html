@@ -89,27 +89,27 @@
       	var price = $('.prod-price').text();
       	var size = $('input[name="proditem"]:checked').val();
       	var quantity = 0;
-    		if ($(".prod-size-value").is(':empty')){
-    			alert('Please select size for this item.');
-    		}
-    		else {
-    			console.log(title+price+size);
-    			if (size === 'S'){
-    				quantity++;
-    				$(".cart-list").append('<li class="cart-item"><div class="container"><div class="row"><div class="col-lg-5"><img src="img/classic-tee.jpg"></div><div class="col-lg-7"><div class="cart-title">'+title+'</div><div class="cart-qty"><span class="cart-qty-total">'+quantity+' x</span> <b>'+price+'</b></div><div class="cart-size">Size: '+size+'</div></div></div></div></li>');
-    			}
-    			if (size === 'M'){
-    				quantity++;
-    				$(".cart-list").append('<li class="cart-item"><div class="container"><div class="row"><div class="col-lg-5"><img src="img/classic-tee.jpg"></div><div class="col-lg-7"><div class="cart-title">'+title+'</div><div class="cart-qty"><span class="cart-qty-total">'+quantity+' x</span> <b>'+price+'</b></div><div class="cart-size">Size: '+size+'</div></div></div></div></li>');
-    			}
-    			if (size === 'L'){
-    				quantity++;
-    				$(".cart-list").append('<li class="cart-item"><div class="container"><div class="row"><div class="col-lg-5"><img src="img/classic-tee.jpg"></div><div class="col-lg-7"><div class="cart-title">'+title+'</div><div class="cart-qty"><span class="cart-qty-total">'+quantity+' x</span> <b>'+price+'</b></div><div class="cart-size">Size: '+size+'</div></div></div></div></li>');
-    			}
+	if ($(".prod-size-value").is(':empty')){
+		alert('Please select size for this item.');
+	}
+	else {
+		console.log(title+price+size);
+		if (size === 'S'){
+			quantity++;
+			$(".cart-list").append('<li class="cart-item"><div class="container"><div class="row"><div class="col-lg-5"><img src="img/classic-tee.jpg"></div><div class="col-lg-7"><div class="cart-title">'+title+'</div><div class="cart-qty"><span class="cart-qty-total">'+quantity+' x</span> <b>'+price+'</b></div><div class="cart-size">Size: '+size+'</div></div></div></div></li>');
+		}
+		if (size === 'M'){
+			quantity++;
+			$(".cart-list").append('<li class="cart-item"><div class="container"><div class="row"><div class="col-lg-5"><img src="img/classic-tee.jpg"></div><div class="col-lg-7"><div class="cart-title">'+title+'</div><div class="cart-qty"><span class="cart-qty-total">'+quantity+' x</span> <b>'+price+'</b></div><div class="cart-size">Size: '+size+'</div></div></div></div></li>');
+		}
+		if (size === 'L'){
+			quantity++;
+			$(".cart-list").append('<li class="cart-item"><div class="container"><div class="row"><div class="col-lg-5"><img src="img/classic-tee.jpg"></div><div class="col-lg-7"><div class="cart-title">'+title+'</div><div class="cart-qty"><span class="cart-qty-total">'+quantity+' x</span> <b>'+price+'</b></div><div class="cart-size">Size: '+size+'</div></div></div></div></li>');
+		}
 
-    			var cart_count = $(".cart-item").length;
-    			$('.cart-count').text("My cart ("+cart_count+")");
-    		}
+		var cart_count = $(".cart-item").length;
+		$('.cart-count').text("My cart ("+cart_count+")");
+	}
       });
     </script>
   </body>
